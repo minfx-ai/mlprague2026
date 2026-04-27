@@ -141,9 +141,9 @@
 <h1>ML Prague 2026</h1>
 <em>Last updated: 2026-04-27 by Michal</em>
 
-<p>We would like to kindly ask you to do following setup steps, so we save time at the workshop. Thank you!</p>
+<p>Please complete the following setup steps so we can save time during the workshop. Thank you!</p>
 
-<p>In case of any issues, please write to michal (you know what) minfx.ai</p>
+<p>If you run into any issues, please write to <code>michal (you know what) minfx.ai</code>.</p>
 
 <h2>1. Setup</h2>
 
@@ -157,20 +157,21 @@
     </li>
 </ul>
 
-<p>Install following packages:</p>
+<p>Install the following packages:</p>
 <pre>python3 -m virtualenv venv
 source venv/bin/activate
-# nvtx: annorations for nsys
+# nvtx: annotations for Nsight Systems
 # viztracer: event-based performance profiling
 pip install torch numpy nvtx viztracer
 </pre>
-<p>Note: The latest <code>torch==2.11.0</code> may require updating nvidia-drivers. If you don't want to do that, you can use older torch version, e.g. <code>torch==2.10.0</code></p>
+<p>Note: The latest <code>torch==2.11.0</code> may require updating NVIDIA drivers. If you do not want to do that, you can use an older torch version, e.g. <code>torch==2.10.0</code>.</p>
 
-<p>Clone following repository:</p>
+<p>Clone the following repository:</p>
 <pre>git clone https://github.com/minfx-ai/mlprague2026</pre>
 
-<p>There is an <code>examples/example.py</code> script and profiling traces in the <code>examples/</code> directory:</p>
-<pre>unzip example-traces.zip</pre>
+<p>There is an <code>example/example.py</code> script and profiling traces in the <code>example/</code> directory:</p>
+<pre>cd example/
+unzip example-traces.zip</pre>
 
 <h2>2. Open profiling traces</h2>
 
@@ -179,7 +180,7 @@ pip install torch numpy nvtx viztracer
 <pre>
 nsys-ui
 </pre>
-<p>You may need to specify full path, e.g. like <code>/usr/local/cuda/bin/nsys-ui</code> - please refer to the nvidia install guides.</p>
+<p>You may need to specify the full path, e.g. <code>/usr/local/cuda/bin/nsys-ui</code>; please refer to the NVIDIA installation guides.</p>
 
 <p>Then <code>File &gt; Open</code> the profiling trace <code>example/example.nsys-rep</code></p>
 
@@ -188,19 +189,21 @@ nsys-ui
 <p>Open Nsight Compute:</p>
 <pre>ncu-ui
 </pre>
-<p>You may need to specify full path, e.g. like <code>/usr/local/cuda/bin/ncu-ui</code> - please refer to the nvidia install guides.</p>
+<p>You may need to specify the full path, e.g. <code>/usr/local/cuda/bin/ncu-ui</code> or <code>/usr/local/NVIDIA-Nsight-Compute-2026.1/ncu-ui</code>; please refer to the NVIDIA installation guides.</p>
 
 <p>Then <code>File &gt; Open</code> the profiling trace <code>example/example.ncu-rep</code></p>
 
 
 <h4>Perfetto (viztracer)</h4>
 
-<p>Open Perfetto (viztracer) profile:</p>
+<p>Open the Perfetto (viztracer) profile:</p>
 <pre>vizviewer example/example.viztracer.json</pre>
 
 <h2>3. (optional) Generate profiling traces</h2>
 
-<p>This step requires access to a NVIDIA GPU. At the workshop, we will provide captured profile traces, so we can focus more on the analysis, rather than the trace generation.</p>
+<p>This step requires access to an NVIDIA GPU. 
+    At the workshop, we will provide captured profile traces so we can focus on analysis rather than trace generation. 
+    You do not need to complete this step for the workshop, but you will need it later to analyze your own code.</p>
 
 <h4>Nsight Systems</h4>
 <p>Run the following command to get the performance data:</p>
@@ -216,13 +219,13 @@ nsys-ui
     python "example.py"
 </pre>
 
-<p>You should see following new files:</p>
+<p>You should see the following new files:</p>
 <pre>
 my-example-trace.nsys-rep
 my-example-trace.sqlite
 </pre>
 
-and output in the terminal similar to following:
+<p>and output in the terminal similar to the following:</p>
 <pre>
     Time (%)  Total Time (ns)  Instances    Avg (ns)       Med (ns)      Min (ns)     Max (ns)    StdDev (ns)    Style           Range        
     --------  ---------------  ---------  -------------  -------------  -----------  -----------  ------------  -------  ---------------------
@@ -311,7 +314,7 @@ and output in the terminal similar to following:
 
 <h4>Nsight Compute</h4>
 
-<p>Nsight Compute requires elevated privileges to access the GPU. You will need to run it under root or setup permissions for your user. See also
+<p>Nsight Compute requires elevated privileges to access the GPU. You will need to run it as root or set up permissions for your user. See also
     <a href="https://developer.nvidia.com/nvidia-development-tools-solutions-err_nvgpuctrperm-permission-issue-performance-counters">NVIDIA: Performance Counters</a>
 </p>
 
@@ -320,13 +323,13 @@ and output in the terminal similar to following:
 ncu -o my-example-trace python example.py
 </pre>
 
-You should see following files:
+You should see the following files:
 
 <pre>
 my-example-trace.ncu-rep
 </pre>
 
-and output in the terminal similar to following:
+<p>and output in the terminal similar to the following:</p>
 <pre>
 ==PROF== Connected to process 38129 (/usr/bin/python3.12)
 ==PROF== Profiling "distribution_elementwise_grid..." - 0: 0%....50%....100% - 9 passes
@@ -350,6 +353,7 @@ and output in the terminal similar to following:
 viztracer -o my-example-trace.viztracer.json example.py
 </pre>
 </main>
+
 <script>
     const allPreBlocks = document.querySelectorAll("pre");
 
