@@ -156,7 +156,8 @@
     <li>
         <a href="https://docs.nvidia.com/nsight-systems/InstallationGuide/index.html#package-manager-installation">Nsight Systems</a>: High-level system-level performance profiling.
 
-        <p>The easiest way to install Nsight Systems is to use the package manager installation.</p>
+        <p>The easiest way to install Nsight Systems is to use the package manager installation (Ubuntu - desktop version).</p>
+        <p>Note: If the auto-detection of OS version fails, you can try to find most appropriate version manually at the <a href="https://developer.download.nvidia.com/devtools/repos/">nvidia repository</a>.</p>
     </li>
     <li>
         <a href="https://developer.nvidia.com/tools-overview/nsight-compute/get-started">Nsight Compute</a>: Detailed kernel-level performance analysis.
@@ -206,6 +207,7 @@ nsys-ui
 
 <p>2.3. Open the Perfetto (viztracer) profile:</p>
 <pre>vizviewer example/example.viztracer.json</pre>
+<p>Note: vizviewer might not work well with Firefox, it should be fine with Chrome.</p>
 
 <h2>3. (optional) Generate profiling traces</h2>
 
